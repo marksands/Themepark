@@ -131,7 +131,6 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
   
   /* Roller Coaster support beams (r_poles) */
   modelViewMatrix.PushMatrix();
-
     for ( i = 0; i < NUMBER_R_POLES; i++ )
     {
       GLfloat currentRotation = i * 360.0f/NUMBER_R_POLES;
@@ -140,34 +139,41 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
       modelViewMatrix.PushMatrix();
         modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
         modelViewMatrix.Translate(0.0f, 0.0f, -0.7f);
-        modelViewMatrix.Translate(cos(D2R(currentRotation)), sin(D2R(currentRotation)), 0.0f);
+        modelViewMatrix.Translate(cos(DEG2RAD(currentRotation)), sin(DEG2RAD(currentRotation)), 0.0f);
         shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
                                      transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
         r_poles[i].Draw();
       modelViewMatrix.PopMatrix();
     }
-
   modelViewMatrix.PopMatrix();
 
   /* Roller Coaster runner */
   modelViewMatrix.PushMatrix();
-  
-  for ( i = 0; i < NUMBER_RUNNER; i++ )
-  {
-    GLfloat currentRotation = i * 360.0f/NUMBER_RUNNER;
-  
-    /* rotate support beam verticle, start in center and spread out at coords x=cos(rot), y=sin(rot) */
-    modelViewMatrix.PushMatrix();
-      modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
-      modelViewMatrix.Translate(0.0f, 0.0f, r_poleLength[i]-0.69f);
-      modelViewMatrix.Translate(cos(D2R(currentRotation)), sin(D2R(currentRotation)), 0.0f);
-      shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
-                                   transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
-      circuit[i].Draw();
-    modelViewMatrix.PopMatrix();  
-  }
-  
+    for ( i = 0; i < NUMBER_RUNNER; i++ )
+    {
+      GLfloat currentRotation = i * 360.0f/NUMBER_RUNNER;
+
+      /* rotate support beam verticle, start in center and spread out at coords x=cos(rot), y=sin(rot) */\
+      modelViewMatrix.PushMatrix();
+        modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
+        modelViewMatrix.Translate(0.0f, 0.0f, r_poleLength[i]-0.69f);
+        modelViewMatrix.Translate(cos(DEG2RAD(currentRotation)), sin(DEG2RAD(currentRotation)), 0.0f);
+        shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
+                                     transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
+        circuit[i].Draw();
+      //printf("pVerts: %f", circuit[i].pVerts[0]);
+      modelViewMatrix.PopMatrix();  
+    }
   modelViewMatrix.PopMatrix();
+
+  glLineWidth(10.0f);
+  glBegin(GL_LINE_LOOP);
+  for ( i = 0; i < NUMBER_RUNNER; i++ ) {
+    GLfloat rot = i * 360.0f/NUMBER_RUNNER;
+    glVertex3f(cos(DEG2RAD(rot)), sin(DEG2RAD(rot)), 0.01*i);
+  }
+  glEnd();
+  
 }
 
 #endif

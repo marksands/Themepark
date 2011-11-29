@@ -29,7 +29,7 @@
 const float PI = 3.14159265f;
 const float PI_OVER_180 = PI/180.0f;
 
-static inline float D2R(float degrees) {
+static inline float DEG2RAD(float degrees) {
   return degrees * PI_OVER_180;
 }
 
@@ -166,7 +166,9 @@ void SetupRenderingContext()
 	// Initialze Shader Manager
 	shaderManager.InitializeStockShaders();	
 	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  glClearColor(0.94f, 0.94f, 1.0f, 1.0f); // Blue Sky
+  //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	theWheel.SetupRenderingContext();
   //simba.SetupRenderingContext();
