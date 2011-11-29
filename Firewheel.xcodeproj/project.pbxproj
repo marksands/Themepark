@@ -1,0 +1,408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4D6498A8146B36C5009A642F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6498A7146B36C5009A642F /* Cocoa.framework */; };
+		4D6498B2146B36C5009A642F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D6498B0146B36C5009A642F /* InfoPlist.strings */; };
+		4D6498B8146B36C5009A642F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4D6498B6146B36C5009A642F /* Credits.rtf */; };
+		4D649953146B3ADC009A642F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D649952146B3ADC009A642F /* GLUT.framework */; };
+		4D649955146B3AE3009A642F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D649954146B3AE3009A642F /* OpenGL.framework */; };
+		4D649957146B3BC9009A642F /* libGLTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D649956146B3BC9009A642F /* libGLTools.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		4D64996C146B3D54009A642F /* BlueMetal.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649959146B3D54009A642F /* BlueMetal.bmp */; };
+		4D64996D146B3D54009A642F /* Brass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D64995A146B3D54009A642F /* Brass.bmp */; };
+		4D64996E146B3D54009A642F /* Bugs.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D64995B146B3D54009A642F /* Bugs.bmp */; };
+		4D64996F146B3D54009A642F /* BugsBunny.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D64995C146B3D54009A642F /* BugsBunny.bmp */; };
+		4D649970146B3D54009A642F /* CutStone.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D64995D146B3D54009A642F /* CutStone.bmp */; };
+		4D649971146B3D54009A642F /* Donald.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D64995E146B3D54009A642F /* Donald.bmp */; };
+		4D649972146B3D54009A642F /* FireParticle.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D64995F146B3D54009A642F /* FireParticle.bmp */; };
+		4D649973146B3D54009A642F /* Goofy.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649960146B3D54009A642F /* Goofy.bmp */; };
+		4D649974146B3D54009A642F /* Marble.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649961146B3D54009A642F /* Marble.bmp */; };
+		4D649975146B3D54009A642F /* Marvin.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649962146B3D54009A642F /* Marvin.bmp */; };
+		4D649976146B3D54009A642F /* Mickey.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649963146B3D54009A642F /* Mickey.bmp */; };
+		4D649977146B3D54009A642F /* MickeyMouse.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649964146B3D54009A642F /* MickeyMouse.bmp */; };
+		4D649978146B3D54009A642F /* Pluto.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649965146B3D54009A642F /* Pluto.bmp */; };
+		4D649979146B3D54009A642F /* Porky.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649966146B3D54009A642F /* Porky.bmp */; };
+		4D64997A146B3D54009A642F /* StainedGlass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649967146B3D54009A642F /* StainedGlass.bmp */; };
+		4D64997B146B3D54009A642F /* Tweety.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649968146B3D54009A642F /* Tweety.bmp */; };
+		4D64997C146B3D54009A642F /* FerrisWheelTextured.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D64996B146B3D54009A642F /* FerrisWheelTextured.cpp */; };
+		4D64998F146F347B009A642F /* monkey.ply in Resources */ = {isa = PBXBuildFile; fileRef = 4D64998E146F347B009A642F /* monkey.ply */; };
+		4D649991146F3654009A642F /* thing.ply in Resources */ = {isa = PBXBuildFile; fileRef = 4D649990146F3654009A642F /* thing.ply */; };
+		4DA762351474BBE1006F103D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA762341474BBE1006F103D /* OpenAL.framework */; };
+		4DA762371474BC54006F103D /* sample.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4DA762361474BC54006F103D /* sample.wav */; };
+		4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4D6498A3146B36C5009A642F /* Firewheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Firewheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D6498A7146B36C5009A642F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4D6498AA146B36C5009A642F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4D6498AB146B36C5009A642F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4D6498AC146B36C5009A642F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4D6498AF146B36C5009A642F /* Firewheel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Firewheel-Info.plist"; sourceTree = "<group>"; };
+		4D6498B1146B36C5009A642F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4D6498B5146B36C5009A642F /* Firewheel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Firewheel-Prefix.pch"; sourceTree = "<group>"; };
+		4D6498B7146B36C5009A642F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		4D649952146B3ADC009A642F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		4D649954146B3AE3009A642F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		4D649956146B3BC9009A642F /* libGLTools.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGLTools.a; path = Firewheel/libGLTools.a; sourceTree = "<group>"; };
+		4D649959146B3D54009A642F /* BlueMetal.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = BlueMetal.bmp; sourceTree = "<group>"; };
+		4D64995A146B3D54009A642F /* Brass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Brass.bmp; sourceTree = "<group>"; };
+		4D64995B146B3D54009A642F /* Bugs.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Bugs.bmp; sourceTree = "<group>"; };
+		4D64995C146B3D54009A642F /* BugsBunny.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = BugsBunny.bmp; sourceTree = "<group>"; };
+		4D64995D146B3D54009A642F /* CutStone.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = CutStone.bmp; sourceTree = "<group>"; };
+		4D64995E146B3D54009A642F /* Donald.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Donald.bmp; sourceTree = "<group>"; };
+		4D64995F146B3D54009A642F /* FireParticle.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = FireParticle.bmp; sourceTree = "<group>"; };
+		4D649960146B3D54009A642F /* Goofy.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Goofy.bmp; sourceTree = "<group>"; };
+		4D649961146B3D54009A642F /* Marble.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Marble.bmp; sourceTree = "<group>"; };
+		4D649962146B3D54009A642F /* Marvin.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Marvin.bmp; sourceTree = "<group>"; };
+		4D649963146B3D54009A642F /* Mickey.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Mickey.bmp; sourceTree = "<group>"; };
+		4D649964146B3D54009A642F /* MickeyMouse.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = MickeyMouse.bmp; sourceTree = "<group>"; };
+		4D649965146B3D54009A642F /* Pluto.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Pluto.bmp; sourceTree = "<group>"; };
+		4D649966146B3D54009A642F /* Porky.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Porky.bmp; sourceTree = "<group>"; };
+		4D649967146B3D54009A642F /* StainedGlass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = StainedGlass.bmp; sourceTree = "<group>"; };
+		4D649968146B3D54009A642F /* Tweety.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Tweety.bmp; sourceTree = "<group>"; };
+		4D649969146B3D54009A642F /* WheelTextured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WheelTextured.h; sourceTree = "<group>"; };
+		4D64996A146B3D54009A642F /* CarTextured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTextured.h; sourceTree = "<group>"; };
+		4D64996B146B3D54009A642F /* FerrisWheelTextured.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FerrisWheelTextured.cpp; sourceTree = "<group>"; };
+		4D64997D146B56F2009A642F /* GLUTKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUTKeyCodes.h; sourceTree = "<group>"; };
+		4D64998C146E2787009A642F /* Lion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lion.h; sourceTree = "<group>"; };
+		4D64998D146F33BB009A642F /* LoadMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMesh.h; sourceTree = "<group>"; };
+		4D64998E146F347B009A642F /* monkey.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.ply; path = Firewheel/monkey.ply; sourceTree = SOURCE_ROOT; };
+		4D649990146F3654009A642F /* thing.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = thing.ply; path = Firewheel/thing.ply; sourceTree = SOURCE_ROOT; };
+		4DA762311474BADC006F103D /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		4DA762331474BB19006F103D /* WavBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WavBuffer.h; sourceTree = "<group>"; };
+		4DA762341474BBE1006F103D /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		4DA762361474BC54006F103D /* sample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sample.wav; sourceTree = "<group>"; };
+		4DE83D28148461AB00F18C33 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = roller_coaster_data.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D6498A0146B36C5009A642F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA762351474BBE1006F103D /* OpenAL.framework in Frameworks */,
+				4D649955146B3AE3009A642F /* OpenGL.framework in Frameworks */,
+				4D649953146B3ADC009A642F /* GLUT.framework in Frameworks */,
+				4D6498A8146B36C5009A642F /* Cocoa.framework in Frameworks */,
+				4D649957146B3BC9009A642F /* libGLTools.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4D649898146B36C4009A642F = {
+			isa = PBXGroup;
+			children = (
+				4D6498AD146B36C5009A642F /* Firewheel */,
+				4D6498A6146B36C5009A642F /* Frameworks */,
+				4D6498A4146B36C5009A642F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4D6498A4146B36C5009A642F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D6498A3146B36C5009A642F /* Firewheel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D6498A6146B36C5009A642F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DA762341474BBE1006F103D /* OpenAL.framework */,
+				4D649956146B3BC9009A642F /* libGLTools.a */,
+				4D649954146B3AE3009A642F /* OpenGL.framework */,
+				4D649952146B3ADC009A642F /* GLUT.framework */,
+				4D6498A7146B36C5009A642F /* Cocoa.framework */,
+				4D6498A9146B36C5009A642F /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D6498A9146B36C5009A642F /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D6498AA146B36C5009A642F /* AppKit.framework */,
+				4D6498AB146B36C5009A642F /* CoreData.framework */,
+				4D6498AC146B36C5009A642F /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4D6498AD146B36C5009A642F /* Firewheel */ = {
+			isa = PBXGroup;
+			children = (
+				4D649958146B3D54009A642F /* Resources */,
+				4D649969146B3D54009A642F /* WheelTextured.h */,
+				4D64996A146B3D54009A642F /* CarTextured.h */,
+				4D64996B146B3D54009A642F /* FerrisWheelTextured.cpp */,
+				4D6498AE146B36C5009A642F /* Supporting Files */,
+				4D64997D146B56F2009A642F /* GLUTKeyCodes.h */,
+				4D64998C146E2787009A642F /* Lion.h */,
+				4D64998D146F33BB009A642F /* LoadMesh.h */,
+				4DA762311474BADC006F103D /* SoundManager.h */,
+				4DA762331474BB19006F103D /* WavBuffer.h */,
+				4DE83D28148461AB00F18C33 /* Track.h */,
+				4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */,
+			);
+			path = Firewheel;
+			sourceTree = "<group>";
+		};
+		4D6498AE146B36C5009A642F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4D6498AF146B36C5009A642F /* Firewheel-Info.plist */,
+				4D6498B0146B36C5009A642F /* InfoPlist.strings */,
+				4D6498B5146B36C5009A642F /* Firewheel-Prefix.pch */,
+				4D6498B6146B36C5009A642F /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4D649958146B3D54009A642F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4DA762361474BC54006F103D /* sample.wav */,
+				4D649990146F3654009A642F /* thing.ply */,
+				4D64998E146F347B009A642F /* monkey.ply */,
+				4D649959146B3D54009A642F /* BlueMetal.bmp */,
+				4D64995A146B3D54009A642F /* Brass.bmp */,
+				4D64995B146B3D54009A642F /* Bugs.bmp */,
+				4D64995C146B3D54009A642F /* BugsBunny.bmp */,
+				4D64995D146B3D54009A642F /* CutStone.bmp */,
+				4D64995E146B3D54009A642F /* Donald.bmp */,
+				4D64995F146B3D54009A642F /* FireParticle.bmp */,
+				4D649960146B3D54009A642F /* Goofy.bmp */,
+				4D649961146B3D54009A642F /* Marble.bmp */,
+				4D649962146B3D54009A642F /* Marvin.bmp */,
+				4D649963146B3D54009A642F /* Mickey.bmp */,
+				4D649964146B3D54009A642F /* MickeyMouse.bmp */,
+				4D649965146B3D54009A642F /* Pluto.bmp */,
+				4D649966146B3D54009A642F /* Porky.bmp */,
+				4D649967146B3D54009A642F /* StainedGlass.bmp */,
+				4D649968146B3D54009A642F /* Tweety.bmp */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4D6498A2146B36C5009A642F /* Firewheel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D6498C1146B36C5009A642F /* Build configuration list for PBXNativeTarget "Firewheel" */;
+			buildPhases = (
+				4D64989F146B36C5009A642F /* Sources */,
+				4D6498A0146B36C5009A642F /* Frameworks */,
+				4D6498A1146B36C5009A642F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Firewheel;
+			productName = Firewheel;
+			productReference = 4D6498A3146B36C5009A642F /* Firewheel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4D64989A146B36C4009A642F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 4D64989D146B36C4009A642F /* Build configuration list for PBXProject "Firewheel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4D649898146B36C4009A642F;
+			productRefGroup = 4D6498A4146B36C5009A642F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D6498A2146B36C5009A642F /* Firewheel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4D6498A1146B36C5009A642F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D6498B2146B36C5009A642F /* InfoPlist.strings in Resources */,
+				4D6498B8146B36C5009A642F /* Credits.rtf in Resources */,
+				4D64996C146B3D54009A642F /* BlueMetal.bmp in Resources */,
+				4D64996D146B3D54009A642F /* Brass.bmp in Resources */,
+				4D64996E146B3D54009A642F /* Bugs.bmp in Resources */,
+				4D64996F146B3D54009A642F /* BugsBunny.bmp in Resources */,
+				4D649970146B3D54009A642F /* CutStone.bmp in Resources */,
+				4D649971146B3D54009A642F /* Donald.bmp in Resources */,
+				4D649972146B3D54009A642F /* FireParticle.bmp in Resources */,
+				4D649973146B3D54009A642F /* Goofy.bmp in Resources */,
+				4D649974146B3D54009A642F /* Marble.bmp in Resources */,
+				4D649975146B3D54009A642F /* Marvin.bmp in Resources */,
+				4D649976146B3D54009A642F /* Mickey.bmp in Resources */,
+				4D649977146B3D54009A642F /* MickeyMouse.bmp in Resources */,
+				4D649978146B3D54009A642F /* Pluto.bmp in Resources */,
+				4D649979146B3D54009A642F /* Porky.bmp in Resources */,
+				4D64997A146B3D54009A642F /* StainedGlass.bmp in Resources */,
+				4D64997B146B3D54009A642F /* Tweety.bmp in Resources */,
+				4D64998F146F347B009A642F /* monkey.ply in Resources */,
+				4D649991146F3654009A642F /* thing.ply in Resources */,
+				4DA762371474BC54006F103D /* sample.wav in Resources */,
+				4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D64989F146B36C5009A642F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D64997C146B3D54009A642F /* FerrisWheelTextured.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4D6498B0146B36C5009A642F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D6498B1146B36C5009A642F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4D6498B6146B36C5009A642F /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D6498B7146B36C5009A642F /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4D6498BF146B36C5009A642F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = /Users/mark/Desktop/Firewheel/Firewheel/GLTools/include;
+			};
+			name = Debug;
+		};
+		4D6498C0146B36C5009A642F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = /Users/mark/Desktop/Firewheel/Firewheel/GLTools/include;
+			};
+			name = Release;
+		};
+		4D6498C2146B36C5009A642F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Firewheel/Firewheel-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Users/mark/Desktop/Firewheel/Firewheel/libGLTools.a;
+				INFOPLIST_FILE = "Firewheel/Firewheel-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Firewheel\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4D6498C3146B36C5009A642F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Firewheel/Firewheel-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Users/mark/Desktop/Firewheel/Firewheel/libGLTools.a;
+				INFOPLIST_FILE = "Firewheel/Firewheel-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Firewheel\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4D64989D146B36C4009A642F /* Build configuration list for PBXProject "Firewheel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D6498BF146B36C5009A642F /* Debug */,
+				4D6498C0146B36C5009A642F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D6498C1146B36C5009A642F /* Build configuration list for PBXNativeTarget "Firewheel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D6498C2146B36C5009A642F /* Debug */,
+				4D6498C3146B36C5009A642F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4D64989A146B36C4009A642F /* Project object */;
+}
