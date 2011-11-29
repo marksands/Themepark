@@ -23,19 +23,10 @@
 #include <cmath>
 #include <ctime>
 
-/* DEGRESS TO RADIANS */
-const float PI = 3.14159265f;
-const float PI_OVER_180 = PI/180.0f;
-
-static inline float D2R(float degrees) {
-  return degrees * PI_OVER_180;
-}
-
 /* R_POLES */
+const GLfloat R_POLE_COLOR[] = { 0.67f, 0.67f, 0.67f, 1.0f };
 const GLint NUMBER_R_POLES = 128;
 const GLfloat R_POLE_MARGIN = 0.02f;
-const GLfloat R_POLE_COLOR[] = { 0.67f, 0.67f, 0.67f, 1.0f };
-
 const GLfloat R_POLE_BASE_RADIUS = 0.01f;
 const GLfloat R_POLE_TOP_RADIUS  = 0.01f;
 const GLint R_POLE_NUMBER_SLICES = 10;
@@ -44,15 +35,15 @@ const GLint R_POLE_NUMBER_STACKS = 10;
 /* RUNNER */
 const GLint NUMBER_RUNNER = 128;
 const GLfloat RUNNER_LENGTH = R_POLE_MARGIN;
-
 const GLfloat RUNNER_BASE_RADIUS = 0.01;
 const GLfloat RUNNER_TOP_RADIUS = 0.01;
 const GLint RUNNER_NUMBER_SLICES = 10;
 const GLint RUNNER_NUMBER_STACKS = 10;
 
 /* FRAME */
-const GLfloat FRAME_OUTER_RADIUS = 2.0f;
-const GLfloat FRAME_INNER_RADIUS = 1.5f;
+const GLfloat FRAME_COLOR[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+const GLfloat FRAME_OUTER_RADIUS = 1.0f;
+const GLfloat FRAME_INNER_RADIUS = 0.025f;
 const GLint FRAME_OUTER_SLICES = 30;
 const GLint FRAME_INNER_SLICES = 30;
 
@@ -129,30 +120,53 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
 {
   int i = 0;
 
-	modelViewMatrix.PushMatrix();
+  /* Bottom eliptical frame */
+  modelViewMatrix.PushMatrix();
+    modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
+    modelViewMatrix.Translate(0.0f, 0.0f, -0.65f);
+    shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
+                                 transformPipeline.GetProjectionMatrix(), vLightEyePos, FRAME_COLOR);
+    frame.Draw();
+  modelViewMatrix.PopMatrix();
+  
+  /* Roller Coaster support beams (r_poles) */
+  modelViewMatrix.PushMatrix();
 
     for ( i = 0; i < NUMBER_R_POLES; i++ )
     {
       GLfloat currentRotation = i * 360.0f/NUMBER_R_POLES;
 
+      /* rotate support beam verticle, start in center and spread out at coords x=cos(rot), y=sin(rot) */
       modelViewMatrix.PushMatrix();
-    
-        /* flip track upside down */
-        modelViewMatrix.Rotate(180, 1.0f, 0.0, 0.0);
-        modelViewMatrix.Translate(0.0, 0.7, 0.0);
-    
-        /* rotate support beam verticle, start in center and spread out at coords x=cos(rot), y=sin(rot) */
-        modelViewMatrix.PushMatrix();
-          modelViewMatrix.Rotate(90, 1.0f, 0.0f, 0.0f);
-          modelViewMatrix.Translate(cos(D2R(currentRotation)), sin(D2R(currentRotation)), 0.0f);
-          shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
-                                       transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
-          r_poles[i].Draw();
-        modelViewMatrix.PopMatrix();
-
+        modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
+        modelViewMatrix.Translate(0.0f, 0.0f, -0.7f);
+        modelViewMatrix.Translate(cos(D2R(currentRotation)), sin(D2R(currentRotation)), 0.0f);
+        shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
+                                     transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
+        r_poles[i].Draw();
       modelViewMatrix.PopMatrix();
     }
 
+  modelViewMatrix.PopMatrix();
+
+  /* Roller Coaster runner */
+  modelViewMatrix.PushMatrix();
+  
+  for ( i = 0; i < NUMBER_RUNNER; i++ )
+  {
+    GLfloat currentRotation = i * 360.0f/NUMBER_RUNNER;
+  
+    /* rotate support beam verticle, start in center and spread out at coords x=cos(rot), y=sin(rot) */
+    modelViewMatrix.PushMatrix();
+      modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
+      modelViewMatrix.Translate(0.0f, 0.0f, r_poleLength[i]-0.69f);
+      modelViewMatrix.Translate(cos(D2R(currentRotation)), sin(D2R(currentRotation)), 0.0f);
+      shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
+                                   transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
+      circuit[i].Draw();
+    modelViewMatrix.PopMatrix();  
+  }
+  
   modelViewMatrix.PopMatrix();
 }
 

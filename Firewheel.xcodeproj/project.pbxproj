@@ -35,6 +35,8 @@
 		4DA762351474BBE1006F103D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA762341474BBE1006F103D /* OpenAL.framework */; };
 		4DA762371474BC54006F103D /* sample.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4DA762361474BC54006F103D /* sample.wav */; };
 		4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */; };
+		4DE83D2D1485589A00F18C33 /* ground.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4DE83D2C1485589A00F18C33 /* ground.bmp */; };
+		4DE83D2F148558E500F18C33 /* grass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4DE83D2E148558E500F18C33 /* grass.bmp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,9 @@
 		4DA762361474BC54006F103D /* sample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sample.wav; sourceTree = "<group>"; };
 		4DE83D28148461AB00F18C33 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = roller_coaster_data.txt; sourceTree = "<group>"; };
+		4DE83D2C1485589A00F18C33 /* ground.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = ground.bmp; sourceTree = "<group>"; };
+		4DE83D2E148558E500F18C33 /* grass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = grass.bmp; sourceTree = "<group>"; };
+		4DE83D301485625C00F18C33 /* Carousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +158,7 @@
 				4DA762331474BB19006F103D /* WavBuffer.h */,
 				4DE83D28148461AB00F18C33 /* Track.h */,
 				4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */,
+				4DE83D301485625C00F18C33 /* Carousel.h */,
 			);
 			path = Firewheel;
 			sourceTree = "<group>";
@@ -171,6 +177,8 @@
 		4D649958146B3D54009A642F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4DE83D2E148558E500F18C33 /* grass.bmp */,
+				4DE83D2C1485589A00F18C33 /* ground.bmp */,
 				4DA762361474BC54006F103D /* sample.wav */,
 				4D649990146F3654009A642F /* thing.ply */,
 				4D64998E146F347B009A642F /* monkey.ply */,
@@ -266,6 +274,8 @@
 				4D649991146F3654009A642F /* thing.ply in Resources */,
 				4DA762371474BC54006F103D /* sample.wav in Resources */,
 				4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */,
+				4DE83D2D1485589A00F18C33 /* ground.bmp in Resources */,
+				4DE83D2F148558E500F18C33 /* grass.bmp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

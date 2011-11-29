@@ -24,6 +24,16 @@
 //#include "LoadMesh.h"
 //#include "Lion.h"
 
+
+/* DEGRESS TO RADIANS */
+const float PI = 3.14159265f;
+const float PI_OVER_180 = PI/180.0f;
+
+static inline float D2R(float degrees) {
+  return degrees * PI_OVER_180;
+}
+
+#include "Carousel.h"
 #include "Track.h"
 
 #ifdef __APPLE__
@@ -60,7 +70,7 @@ const int   NBR_WHEEL_TEXTURES = 3;
 const int   NBR_WALL_TEXTURES = 4;
 const int   NBR_CAR_TEXTURES = 4;
 const int   MAX_FILENAME_LENGTH = 20;
-const char  GROUND_TEXTURE_FILENAME[MAX_FILENAME_LENGTH] = { "Marble.bmp" };
+const char  GROUND_TEXTURE_FILENAME[MAX_FILENAME_LENGTH] = { "grass.bmp" }; // { "Marble.bmp" };
 const char  CAP_TEXTURE_FILENAME[NBR_TEXTURE_SETS][MAX_FILENAME_LENGTH] = {
   "MickeyMouse.bmp", "BugsBunny.bmp"
 };
@@ -111,6 +121,9 @@ void NonASCIIKeyboardPress(int key, int mouseXPosition, int mouseYPosition);
 // THE TRACK
 Track track;
 
+// THE CAROUSEL
+Carousel carousel;
+
 char* files[1] = { const_cast<char*>("sample.wav") };
 
 MediaPlayer *SoundEngine = new Balto(files);
@@ -158,6 +171,7 @@ void SetupRenderingContext()
 	theWheel.SetupRenderingContext();
   //simba.SetupRenderingContext();
   track.SetupRenderingContext();
+  carousel.SetupRenderingContext();
 
 	// Make the ground
 	GLfloat texSize = 50.0f;
@@ -365,6 +379,11 @@ void DrawScene()
     modelViewMatrix.PushMatrix();
       //simba.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos, 0, wallTexture[0][1], carTexture);
       track.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
+    modelViewMatrix.PopMatrix();
+  
+    modelViewMatrix.PushMatrix();
+      modelViewMatrix.Translate(3.0f, 0.0f, 0.0f);
+      carousel.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
     modelViewMatrix.PopMatrix();
 
 	modelViewMatrix.PopMatrix();
