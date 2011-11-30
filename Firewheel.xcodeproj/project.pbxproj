@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D38F97A1485A176008BB0CF /* runner_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D38F9791485A176008BB0CF /* runner_data.txt */; };
 		4D6498A8146B36C5009A642F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6498A7146B36C5009A642F /* Cocoa.framework */; };
 		4D6498B2146B36C5009A642F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D6498B0146B36C5009A642F /* InfoPlist.strings */; };
 		4D6498B8146B36C5009A642F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4D6498B6146B36C5009A642F /* Credits.rtf */; };
@@ -40,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D38F9791485A176008BB0CF /* runner_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = runner_data.txt; sourceTree = "<group>"; };
+		4D38F97D1485CE6F008BB0CF /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		4D6498A3146B36C5009A642F /* Firewheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Firewheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D6498A7146B36C5009A642F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4D6498AA146B36C5009A642F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -159,6 +162,8 @@
 				4DE83D28148461AB00F18C33 /* Track.h */,
 				4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */,
 				4DE83D301485625C00F18C33 /* Carousel.h */,
+				4D38F9791485A176008BB0CF /* runner_data.txt */,
+				4D38F97D1485CE6F008BB0CF /* Common.h */,
 			);
 			path = Firewheel;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */,
 				4DE83D2D1485589A00F18C33 /* ground.bmp in Resources */,
 				4DE83D2F148558E500F18C33 /* grass.bmp in Resources */,
+				4D38F97A1485A176008BB0CF /* runner_data.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

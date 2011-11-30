@@ -23,6 +23,8 @@
 #include <cmath>
 #include <ctime>
 
+#include "CarTextured.h"
+
 /* R_POLES */
 const GLfloat R_POLE_COLOR[] = { 0.67f, 0.67f, 0.67f, 1.0f };
 const GLint NUMBER_R_POLES = 128;
@@ -47,8 +49,11 @@ const GLfloat FRAME_INNER_RADIUS = 0.025f;
 const GLint FRAME_OUTER_SLICES = 30;
 const GLint FRAME_INNER_SLICES = 30;
 
+const GLint NUMBER_CARS = 3;
+
 /* DATA FILE */
 const char* COASTER_DATA_FILE = "roller_coaster_data.txt";
+const char* RUNNER_DATA_FILE = "runner_data.txt";
 
 /* TRACK */
 class Track
@@ -66,7 +71,12 @@ class Track
     GLTriangleBatch r_poles[NUMBER_R_POLES];
     GLTriangleBatch circuit[NUMBER_RUNNER];
   
+    GLBatch lineLoop;
+  
     GLfloat r_poleLength[NUMBER_R_POLES];
+    GLfloat runner_verts[NUMBER_RUNNER][3];
+
+    Car cars[NUMBER_CARS];
 };
 
 Track::Track()
@@ -81,23 +91,38 @@ Track::~Track()
 
 void Track::SetupRenderingContext()
 { 
-  int i = 0;
+  int i;
   std::string fileHeader;
 
-  /* read data int r_poleLength */
+  /* read pole data int r_poleLength */
   std::ifstream dataFile(COASTER_DATA_FILE);
-
   if (dataFile.is_open())
   {
     /* ignore first line in data file */
     getline(dataFile, fileHeader);
 
-    for (; !dataFile.eof(); i++ ) {
+    for (i = 0; !dataFile.eof(); i++) {
       dataFile >> r_poleLength[i];
     }
   }
-
   dataFile.close();
+
+  /* read runner data into runner_verts */
+  std::ifstream runnerData(RUNNER_DATA_FILE);
+  if (runnerData.is_open())
+  {
+    for (i = 0; !runnerData.eof(); i++) {
+      runnerData >> runner_verts[i][0] >> runner_verts[i][1] >> runner_verts[i][2];
+      runner_verts[i][0] -= 1.00;
+      runner_verts[i][2] += 0.08;
+    }
+  }
+  runnerData.close();
+  
+  /* Copy vertex data into custom batch object */
+  lineLoop.Begin(GL_LINE_LOOP, 128);
+    lineLoop.CopyVertexData3f(runner_verts);
+  lineLoop.End();
 
   /* coaster support poles */
   for ( i = 0; i < NUMBER_R_POLES; i++ )
@@ -128,7 +153,7 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
                                  transformPipeline.GetProjectionMatrix(), vLightEyePos, FRAME_COLOR);
     frame.Draw();
   modelViewMatrix.PopMatrix();
-  
+
   /* Roller Coaster support beams (r_poles) */
   modelViewMatrix.PushMatrix();
     for ( i = 0; i < NUMBER_R_POLES; i++ )
@@ -139,13 +164,16 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
       modelViewMatrix.PushMatrix();
         modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
         modelViewMatrix.Translate(0.0f, 0.0f, -0.7f);
-        modelViewMatrix.Translate(cos(DEG2RAD(currentRotation)), sin(DEG2RAD(currentRotation)), 0.0f);
+        modelViewMatrix.Translate(cosf(DEG2RAD(currentRotation)), sinf(DEG2RAD(currentRotation)), 0.0f);
+        //printf("%f %f %f\n", cosf(DEG2RAD(currentRotation)), sinf(DEG2RAD(currentRotation)), r_poleLength[i] - 0.7f );
         shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
                                      transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
         r_poles[i].Draw();
       modelViewMatrix.PopMatrix();
     }
   modelViewMatrix.PopMatrix();
+
+  //printf("----------\n-----------\n------------");
 
   /* Roller Coaster runner */
   modelViewMatrix.PushMatrix();
@@ -157,23 +185,19 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
       modelViewMatrix.PushMatrix();
         modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
         modelViewMatrix.Translate(0.0f, 0.0f, r_poleLength[i]-0.69f);
-        modelViewMatrix.Translate(cos(DEG2RAD(currentRotation)), sin(DEG2RAD(currentRotation)), 0.0f);
+        modelViewMatrix.Translate(cosf(DEG2RAD(currentRotation)), sinf(DEG2RAD(currentRotation)), 0.0f);
         shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
                                      transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
-        circuit[i].Draw();
-      //printf("pVerts: %f", circuit[i].pVerts[0]);
+      //circuit[i].Draw();
       modelViewMatrix.PopMatrix();  
     }
   modelViewMatrix.PopMatrix();
 
-  glLineWidth(10.0f);
-  glBegin(GL_LINE_LOOP);
-  for ( i = 0; i < NUMBER_RUNNER; i++ ) {
-    GLfloat rot = i * 360.0f/NUMBER_RUNNER;
-    glVertex3f(cos(DEG2RAD(rot)), sin(DEG2RAD(rot)), 0.01*i);
-  }
-  glEnd();
-  
+  /* Roller Coaster runner track */  
+  modelViewMatrix.PushMatrix();
+    glLineWidth(16.0f);
+    lineLoop.Draw();
+  modelViewMatrix.PopMatrix();
 }
 
 #endif

@@ -18,21 +18,11 @@
 #include <GLGeometryTransform.h>
 #include <cmath>
 #include <cstdarg>
-#include "WheelTextured.h"
+
+#include "Common.h"
 #include "GLUTKeyCodes.h"
 
-//#include "LoadMesh.h"
-//#include "Lion.h"
-
-
-/* DEGRESS TO RADIANS */
-const float PI = 3.14159265f;
-const float PI_OVER_180 = PI/180.0f;
-
-static inline float DEG2RAD(float degrees) {
-  return degrees * PI_OVER_180;
-}
-
+#include "WheelTextured.h"
 #include "Carousel.h"
 #include "Track.h"
 

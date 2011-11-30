@@ -55,23 +55,6 @@ const int WALL_NUMBER_STACKS   = 10;
 const GLfloat WHITE_COLOR[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 const GLfloat LIGHT_POSITION[] = { 2.0f, 8.0f, 5.0f, 1.0f };
 
-// Utility Function: Generate a random integer value between the two parameterized values.
-int GenerateRandomNumber(int lowerBound, int upperBound);
-int GenerateRandomNumber(int lowerBound, int upperBound)
-{
-	static bool firstTime = true;
-	static time_t randomNumberSeed;
-
-	if (firstTime)
-	{
-		time(&randomNumberSeed);
-		firstTime = false;
-		srand((unsigned int)randomNumberSeed);
-	}
-
-	return ( lowerBound + rand() % (upperBound - lowerBound + 1) );
-}
-
 class Car
 {
 	public:
