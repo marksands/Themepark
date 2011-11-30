@@ -21,10 +21,16 @@
 
 #include "Common.h"
 #include "GLUTKeyCodes.h"
+#include "SoundManager.h"
 
 #include "WheelTextured.h"
 #include "Carousel.h"
 #include "Track.h"
+
+#include "Unicorn.h"
+#include "Lion.h"
+//#include "Dolphin.h"
+//#include "Bird.h"
 
 #ifdef __APPLE__
   #include <glut/glut.h>
@@ -32,8 +38,6 @@
   #define FREEGLUT_STATIC
   #include <GL/glut.h>
 #endif
-
-#include "SoundManager.h"
 
 /* Disable console on WIN_32 */
 #if defined(__WIN32__) || defined(_WIN32)
@@ -360,6 +364,8 @@ void DrawScene()
 		M3DVector4f vLightEyePos;
 		m3dTransformVector4(vLightEyePos, vLightPos, mCamera);
 
+    /*
+
 		// Position the ferris wheel appropriately.
 		modelViewMatrix.Translate(FERRIS_WHEEL_POSITION[0], FERRIS_WHEEL_POSITION[1], FERRIS_WHEEL_POSITION[2]);
 
@@ -377,6 +383,8 @@ void DrawScene()
       modelViewMatrix.Translate(3.0f, 0.0f, 0.0f);
       carousel.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
     modelViewMatrix.PopMatrix();
+
+  */
 
 	modelViewMatrix.PopMatrix();
 }

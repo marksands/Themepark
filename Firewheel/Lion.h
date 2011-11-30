@@ -20,42 +20,11 @@
 #include <cmath>
 #include <ctime>
 
-//const GLfloat BAR_BASE_RADIUS = 0.003f;
-//const GLfloat BAR_TOP_RADIUS  = 0.003f;
-//const GLfloat BAR_LENGTH      = 0.1f;
-//const int BAR_NUMBER_SLICES   = 10;
-//const int BAR_NUMBER_STACKS   = 10;
-//
-//const GLfloat ROOF_BASE_RADIUS = 0.0f;
-//const GLfloat ROOF_TOP_RADIUS  = 0.045f;
-//const GLfloat ROOF_LENGTH      = 0.02f;
-//const int ROOF_NUMBER_SLICES   = 10;
-//const int ROOF_NUMBER_STACKS   = 10;
-//
-//const GLfloat POLE_BASE_RADIUS = 0.005f;
-//const GLfloat POLE_TOP_RADIUS  = 0.005f;
-//const GLfloat POLE_LENGTH      = 0.1f;
-//const int POLE_NUMBER_SLICES   = 10;
-//const int POLE_NUMBER_STACKS   = 10;
-//
-//const GLfloat FLOOR_SCALE[] = { 1.0f, 1.0f, 0.4f };
-//const GLfloat FLOOR_RADIUS    = 0.0375f;
-//const int FLOOR_NUMBER_SLICES = 10;
-//const int FLOOR_NUMBER_STACKS = 10;
-//
-//const GLfloat WALL_BASE_RADIUS = 0.04f;
-//const GLfloat WALL_TOP_RADIUS  = 0.04f;
-//const GLfloat WALL_LENGTH      = 0.04f;
-//const int WALL_NUMBER_SLICES   = 10;
-//const int WALL_NUMBER_STACKS   = 10;
-//
-//const GLfloat WHITE_COLOR[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-//const GLfloat LIGHT_POSITION[] = { 2.0f, 8.0f, 5.0f, 1.0f };
-
 class Lion
 {
 public:
   Lion();
+
   void SetupRenderingContext();
   void Update();
   void Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager, GLGeometryTransform &transformPipeline,

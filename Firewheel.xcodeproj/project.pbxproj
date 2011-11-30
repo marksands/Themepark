@@ -31,8 +31,6 @@
 		4D64997A146B3D54009A642F /* StainedGlass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649967146B3D54009A642F /* StainedGlass.bmp */; };
 		4D64997B146B3D54009A642F /* Tweety.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649968146B3D54009A642F /* Tweety.bmp */; };
 		4D64997C146B3D54009A642F /* FerrisWheelTextured.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D64996B146B3D54009A642F /* FerrisWheelTextured.cpp */; };
-		4D64998F146F347B009A642F /* monkey.ply in Resources */ = {isa = PBXBuildFile; fileRef = 4D64998E146F347B009A642F /* monkey.ply */; };
-		4D649991146F3654009A642F /* thing.ply in Resources */ = {isa = PBXBuildFile; fileRef = 4D649990146F3654009A642F /* thing.ply */; };
 		4DA762351474BBE1006F103D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA762341474BBE1006F103D /* OpenAL.framework */; };
 		4DA762371474BC54006F103D /* sample.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4DA762361474BC54006F103D /* sample.wav */; };
 		4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */; };
@@ -76,13 +74,11 @@
 		4D64996B146B3D54009A642F /* FerrisWheelTextured.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FerrisWheelTextured.cpp; sourceTree = "<group>"; };
 		4D64997D146B56F2009A642F /* GLUTKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUTKeyCodes.h; sourceTree = "<group>"; };
 		4D64998C146E2787009A642F /* Lion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lion.h; sourceTree = "<group>"; };
-		4D64998D146F33BB009A642F /* LoadMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMesh.h; sourceTree = "<group>"; };
-		4D64998E146F347B009A642F /* monkey.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.ply; path = Firewheel/monkey.ply; sourceTree = SOURCE_ROOT; };
-		4D649990146F3654009A642F /* thing.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = thing.ply; path = Firewheel/thing.ply; sourceTree = SOURCE_ROOT; };
 		4DA762311474BADC006F103D /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		4DA762331474BB19006F103D /* WavBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WavBuffer.h; sourceTree = "<group>"; };
 		4DA762341474BBE1006F103D /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		4DA762361474BC54006F103D /* sample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sample.wav; sourceTree = "<group>"; };
+		4DD4281A1486D7B700C91F90 /* Unicorn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unicorn.h; sourceTree = "<group>"; };
 		4DE83D28148461AB00F18C33 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = roller_coaster_data.txt; sourceTree = "<group>"; };
 		4DE83D2C1485589A00F18C33 /* ground.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = ground.bmp; sourceTree = "<group>"; };
@@ -156,7 +152,6 @@
 				4D6498AE146B36C5009A642F /* Supporting Files */,
 				4D64997D146B56F2009A642F /* GLUTKeyCodes.h */,
 				4D64998C146E2787009A642F /* Lion.h */,
-				4D64998D146F33BB009A642F /* LoadMesh.h */,
 				4DA762311474BADC006F103D /* SoundManager.h */,
 				4DA762331474BB19006F103D /* WavBuffer.h */,
 				4DE83D28148461AB00F18C33 /* Track.h */,
@@ -164,6 +159,7 @@
 				4DE83D301485625C00F18C33 /* Carousel.h */,
 				4D38F9791485A176008BB0CF /* runner_data.txt */,
 				4D38F97D1485CE6F008BB0CF /* Common.h */,
+				4DD4281A1486D7B700C91F90 /* Unicorn.h */,
 			);
 			path = Firewheel;
 			sourceTree = "<group>";
@@ -185,8 +181,6 @@
 				4DE83D2E148558E500F18C33 /* grass.bmp */,
 				4DE83D2C1485589A00F18C33 /* ground.bmp */,
 				4DA762361474BC54006F103D /* sample.wav */,
-				4D649990146F3654009A642F /* thing.ply */,
-				4D64998E146F347B009A642F /* monkey.ply */,
 				4D649959146B3D54009A642F /* BlueMetal.bmp */,
 				4D64995A146B3D54009A642F /* Brass.bmp */,
 				4D64995B146B3D54009A642F /* Bugs.bmp */,
@@ -275,8 +269,6 @@
 				4D649979146B3D54009A642F /* Porky.bmp in Resources */,
 				4D64997A146B3D54009A642F /* StainedGlass.bmp in Resources */,
 				4D64997B146B3D54009A642F /* Tweety.bmp in Resources */,
-				4D64998F146F347B009A642F /* monkey.ply in Resources */,
-				4D649991146F3654009A642F /* thing.ply in Resources */,
 				4DA762371474BC54006F103D /* sample.wav in Resources */,
 				4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */,
 				4DE83D2D1485589A00F18C33 /* ground.bmp in Resources */,

@@ -164,7 +164,7 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
       modelViewMatrix.PushMatrix();
         modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
         modelViewMatrix.Translate(0.0f, 0.0f, -0.7f);
-        modelViewMatrix.Translate(cosf(DEG2RAD(currentRotation)), sinf(DEG2RAD(currentRotation)), 0.0f);
+        modelViewMatrix.Translate(cosf(m3dDegToRad(currentRotation)), sinf(m3dDegToRad(currentRotation)), 0.0f);
         //printf("%f %f %f\n", cosf(DEG2RAD(currentRotation)), sinf(DEG2RAD(currentRotation)), r_poleLength[i] - 0.7f );
         shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
                                      transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
@@ -185,7 +185,7 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
       modelViewMatrix.PushMatrix();
         modelViewMatrix.Rotate(-90, 1.0f, 0.0f, 0.0f);
         modelViewMatrix.Translate(0.0f, 0.0f, r_poleLength[i]-0.69f);
-        modelViewMatrix.Translate(cosf(DEG2RAD(currentRotation)), sinf(DEG2RAD(currentRotation)), 0.0f);
+        modelViewMatrix.Translate(cosf(m3dDegToRad(currentRotation)), sinf(m3dDegToRad(currentRotation)), 0.0f);
         shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
                                      transformPipeline.GetProjectionMatrix(), vLightEyePos, R_POLE_COLOR);
       //circuit[i].Draw();
@@ -197,6 +197,13 @@ void Track::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManager,
   modelViewMatrix.PushMatrix();
     glLineWidth(16.0f);
     lineLoop.Draw();
+  modelViewMatrix.PopMatrix();
+
+  /* Cars */
+  modelViewMatrix.PushMatrix();
+    
+    
+    
   modelViewMatrix.PopMatrix();
 }
 

@@ -155,7 +155,7 @@ void Carousel::Draw(GLMatrixStack &modelViewMatrix, GLShaderManager &shaderManag
       int rot = i*360.0f/NBR_RIDE_POLES;
 
       modelViewMatrix.PushMatrix();
-        modelViewMatrix.Translate(cos(DEG2RAD(rot))/1.2f, sin(DEG2RAD(rot))/1.2f, 0.0f);
+        modelViewMatrix.Translate(cosf(m3dDegToRad(rot))/1.2f, sinf(m3dDegToRad(rot))/1.2f, 0.0f);
         modelViewMatrix.Translate(0.0f, 0.0f, -0.70f);
         shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF, transformPipeline.GetModelViewMatrix(), 
                                      transformPipeline.GetProjectionMatrix(), vLightEyePos, ROOF_CAP_COLOR);
