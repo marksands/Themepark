@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D38F97A1485A176008BB0CF /* runner_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D38F9791485A176008BB0CF /* runner_data.txt */; };
+		4D4CB2161487389300654C4A /* main.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4D4CB2131487389300654C4A /* main.wav */; };
+		4D4CB2171487389300654C4A /* roller_coaster_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D4CB2141487389300654C4A /* roller_coaster_data.txt */; };
+		4D4CB2181487389300654C4A /* runner_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D4CB2151487389300654C4A /* runner_data.txt */; };
 		4D6498A8146B36C5009A642F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6498A7146B36C5009A642F /* Cocoa.framework */; };
 		4D6498B2146B36C5009A642F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D6498B0146B36C5009A642F /* InfoPlist.strings */; };
 		4D6498B8146B36C5009A642F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4D6498B6146B36C5009A642F /* Credits.rtf */; };
@@ -32,15 +34,16 @@
 		4D64997B146B3D54009A642F /* Tweety.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4D649968146B3D54009A642F /* Tweety.bmp */; };
 		4D64997C146B3D54009A642F /* FerrisWheelTextured.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D64996B146B3D54009A642F /* FerrisWheelTextured.cpp */; };
 		4DA762351474BBE1006F103D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA762341474BBE1006F103D /* OpenAL.framework */; };
-		4DA762371474BC54006F103D /* sample.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4DA762361474BC54006F103D /* sample.wav */; };
-		4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */; };
 		4DE83D2D1485589A00F18C33 /* ground.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4DE83D2C1485589A00F18C33 /* ground.bmp */; };
 		4DE83D2F148558E500F18C33 /* grass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 4DE83D2E148558E500F18C33 /* grass.bmp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D38F9791485A176008BB0CF /* runner_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = runner_data.txt; sourceTree = "<group>"; };
 		4D38F97D1485CE6F008BB0CF /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		4D4CB2131487389300654C4A /* main.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = main.wav; sourceTree = "<group>"; };
+		4D4CB2141487389300654C4A /* roller_coaster_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = roller_coaster_data.txt; sourceTree = "<group>"; };
+		4D4CB2151487389300654C4A /* runner_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = runner_data.txt; sourceTree = "<group>"; };
+		4D4CB21B1487728600654C4A /* Turtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Turtle.h; sourceTree = "<group>"; };
 		4D6498A3146B36C5009A642F /* Firewheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Firewheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D6498A7146B36C5009A642F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4D6498AA146B36C5009A642F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -73,14 +76,12 @@
 		4D64996A146B3D54009A642F /* CarTextured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTextured.h; sourceTree = "<group>"; };
 		4D64996B146B3D54009A642F /* FerrisWheelTextured.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FerrisWheelTextured.cpp; sourceTree = "<group>"; };
 		4D64997D146B56F2009A642F /* GLUTKeyCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUTKeyCodes.h; sourceTree = "<group>"; };
-		4D64998C146E2787009A642F /* Lion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lion.h; sourceTree = "<group>"; };
+		4D64998C146E2787009A642F /* Ostrich.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ostrich.h; sourceTree = "<group>"; };
 		4DA762311474BADC006F103D /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		4DA762331474BB19006F103D /* WavBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WavBuffer.h; sourceTree = "<group>"; };
 		4DA762341474BBE1006F103D /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
-		4DA762361474BC54006F103D /* sample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sample.wav; sourceTree = "<group>"; };
 		4DD4281A1486D7B700C91F90 /* Unicorn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unicorn.h; sourceTree = "<group>"; };
-		4DE83D28148461AB00F18C33 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
-		4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = roller_coaster_data.txt; sourceTree = "<group>"; };
+		4DE83D28148461AB00F18C33 /* RollerCoaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollerCoaster.h; sourceTree = "<group>"; };
 		4DE83D2C1485589A00F18C33 /* ground.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = ground.bmp; sourceTree = "<group>"; };
 		4DE83D2E148558E500F18C33 /* grass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = grass.bmp; sourceTree = "<group>"; };
 		4DE83D301485625C00F18C33 /* Carousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel.h; sourceTree = "<group>"; };
@@ -102,6 +103,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D4CB2191487726400654C4A /* Animals */ = {
+			isa = PBXGroup;
+			children = (
+				4D64998C146E2787009A642F /* Ostrich.h */,
+				4DD4281A1486D7B700C91F90 /* Unicorn.h */,
+				4D4CB21B1487728600654C4A /* Turtle.h */,
+			);
+			name = Animals;
+			sourceTree = "<group>";
+		};
+		4D4CB21A1487727100654C4A /* Rides */ = {
+			isa = PBXGroup;
+			children = (
+				4DE83D28148461AB00F18C33 /* RollerCoaster.h */,
+				4DE83D301485625C00F18C33 /* Carousel.h */,
+			);
+			name = Rides;
+			sourceTree = "<group>";
+		};
 		4D649898146B36C4009A642F = {
 			isa = PBXGroup;
 			children = (
@@ -145,21 +165,17 @@
 		4D6498AD146B36C5009A642F /* Firewheel */ = {
 			isa = PBXGroup;
 			children = (
+				4D4CB21A1487727100654C4A /* Rides */,
+				4D4CB2191487726400654C4A /* Animals */,
 				4D649958146B3D54009A642F /* Resources */,
 				4D649969146B3D54009A642F /* WheelTextured.h */,
 				4D64996A146B3D54009A642F /* CarTextured.h */,
 				4D64996B146B3D54009A642F /* FerrisWheelTextured.cpp */,
 				4D6498AE146B36C5009A642F /* Supporting Files */,
 				4D64997D146B56F2009A642F /* GLUTKeyCodes.h */,
-				4D64998C146E2787009A642F /* Lion.h */,
 				4DA762311474BADC006F103D /* SoundManager.h */,
 				4DA762331474BB19006F103D /* WavBuffer.h */,
-				4DE83D28148461AB00F18C33 /* Track.h */,
-				4DE83D2A14846C9300F18C33 /* roller_coaster_data.txt */,
-				4DE83D301485625C00F18C33 /* Carousel.h */,
-				4D38F9791485A176008BB0CF /* runner_data.txt */,
 				4D38F97D1485CE6F008BB0CF /* Common.h */,
-				4DD4281A1486D7B700C91F90 /* Unicorn.h */,
 			);
 			path = Firewheel;
 			sourceTree = "<group>";
@@ -178,9 +194,11 @@
 		4D649958146B3D54009A642F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D4CB2131487389300654C4A /* main.wav */,
+				4D4CB2141487389300654C4A /* roller_coaster_data.txt */,
+				4D4CB2151487389300654C4A /* runner_data.txt */,
 				4DE83D2E148558E500F18C33 /* grass.bmp */,
 				4DE83D2C1485589A00F18C33 /* ground.bmp */,
-				4DA762361474BC54006F103D /* sample.wav */,
 				4D649959146B3D54009A642F /* BlueMetal.bmp */,
 				4D64995A146B3D54009A642F /* Brass.bmp */,
 				4D64995B146B3D54009A642F /* Bugs.bmp */,
@@ -269,11 +287,11 @@
 				4D649979146B3D54009A642F /* Porky.bmp in Resources */,
 				4D64997A146B3D54009A642F /* StainedGlass.bmp in Resources */,
 				4D64997B146B3D54009A642F /* Tweety.bmp in Resources */,
-				4DA762371474BC54006F103D /* sample.wav in Resources */,
-				4DE83D2B14846C9300F18C33 /* roller_coaster_data.txt in Resources */,
 				4DE83D2D1485589A00F18C33 /* ground.bmp in Resources */,
 				4DE83D2F148558E500F18C33 /* grass.bmp in Resources */,
-				4D38F97A1485A176008BB0CF /* runner_data.txt in Resources */,
+				4D4CB2161487389300654C4A /* main.wav in Resources */,
+				4D4CB2171487389300654C4A /* roller_coaster_data.txt in Resources */,
+				4D4CB2181487389300654C4A /* runner_data.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

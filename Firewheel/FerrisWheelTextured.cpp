@@ -1,12 +1,9 @@
 //
-//  GLUTKeyCodes.h
-//  Firewheel
+//  ThemePark
 //
 //  Created by Mark Sands on 11/9/11.
 //  Copyright (c) 2011 Mark Sands. All rights reserved.
 //
-////////////////////////////////////////////////////////////
-// Texture-mapped Ferris wheel with primitive reflection. //
 ////////////////////////////////////////////////////////////
 
 #include <GLTools.h>
@@ -25,12 +22,7 @@
 
 #include "WheelTextured.h"
 #include "Carousel.h"
-#include "Track.h"
-
-#include "Unicorn.h"
-#include "Lion.h"
-//#include "Dolphin.h"
-//#include "Bird.h"
+#include "RollerCoaster.h"
 
 #ifdef __APPLE__
   #include <glut/glut.h>
@@ -39,11 +31,19 @@
   #include <GL/glut.h>
 #endif
 
+#include "Unicorn.h"
+#include "Ostrich.h"
+#include "Turtle.h"
+//#include "Dolphin.h"
+
+/* ------------------------- */
 /* Disable console on WIN_32 */
 #if defined(__WIN32__) || defined(_WIN32)
 #pragma comment(linker, "/subsystem:\"windows\" \
 /entry:\"mainCRTStartup\"")
 #endif
+
+/* ------------------------------- */
 
 const int   ORIG_WINDOW_SIZE[] = { 1000, 1000 };
 const float CAMERA_LINEAR_STEP = 0.1f;
@@ -52,19 +52,32 @@ const float FRUSTUM_FIELD_OF_VIEW = 35.0f;
 const float FRUSTUM_NEAR_PLANE = 0.1f;
 const float FRUSTUM_FAR_PLANE = 100.0f;
 
+/* ------------------------------- */
+
 const float FLOOR_GRID_WIDTH = 40.0f;
 const float FLOOR_GRID_INCREMENT = 0.5f;
 const float FLOOR_HEIGHT = -0.65f;
 const float REFLECTING_ALPHA = 0.5f;
 const float NONREFLECTING_ALPHA = 1.0f;
 
+/* ------------------------------- */
+
 const float FERRIS_WHEEL_POSITION[] = { 0.0f, 0.0f, -2.5f };
+
+/* ------------------------------- */
+
 const int   NBR_TEXTURE_SETS = 2;
 const int   NBR_WHEEL_TEXTURES = 3;
 const int   NBR_WALL_TEXTURES = 4;
 const int   NBR_CAR_TEXTURES = 4;
+
+/* ------------------------------- */
+
 const int   MAX_FILENAME_LENGTH = 20;
-const char  GROUND_TEXTURE_FILENAME[MAX_FILENAME_LENGTH] = { "grass.bmp" }; // { "Marble.bmp" };
+
+const char  GROUND_TEXTURE_FILENAME[MAX_FILENAME_LENGTH] = { 
+  "grass.bmp" 
+};
 const char  CAP_TEXTURE_FILENAME[NBR_TEXTURE_SETS][MAX_FILENAME_LENGTH] = {
   "MickeyMouse.bmp", "BugsBunny.bmp"
 };
@@ -78,13 +91,19 @@ const char  WALL_TEXTURE_FILENAME[NBR_TEXTURE_SETS][NBR_WALL_TEXTURES][MAX_FILEN
 const char  CAR_TEXTURE_FILENAME[NBR_CAR_TEXTURES][MAX_FILENAME_LENGTH] = { 
   "BlueMetal.bmp", "StainedGlass.bmp", "BlueMetal.bmp", "CutStone.bmp"
 };
-const char  FIRE_TEXTURE_FILENAME[MAX_FILENAME_LENGTH] = "FireParticle.bmp";
+const char  FIRE_TEXTURE_FILENAME[MAX_FILENAME_LENGTH] = { 
+  "FireParticle.bmp"
+};
+
+/* ------------------------------- */
 
 GLShaderManager shaderManager; // Shader Manager
 GLMatrixStack modelViewMatrix; // Modelview Matrix
 GLMatrixStack projectionMatrix; // Projection Matrix
 GLFrustum viewFrustum; // View Frustum
 GLGeometryTransform	transformPipeline; // Geometry Transform Pipeline
+
+/* ------------------------------- */
 
 Wheel   theWheel;
 bool    fullscreen = false;
@@ -98,6 +117,8 @@ GLuint  wheelTexture[NBR_WHEEL_TEXTURES];
 GLuint  wallTexture[NBR_TEXTURE_SETS][NBR_WALL_TEXTURES];
 GLuint  carTexture[NBR_CAR_TEXTURES];
 
+/* ------------------------------- */
+
 void SetupRenderingContext();
 void ShutdownRenderingContext();
 bool LoadBMPTexture(const char *szFileName, GLenum minFilter, GLenum magFilter, GLenum wrapMode);
@@ -109,23 +130,33 @@ void TimerFunction(int value);
 void KeyboardPress(unsigned char pressedKey, int mouseXPosition, int mouseYPosition);
 void NonASCIIKeyboardPress(int key, int mouseXPosition, int mouseYPosition);
 
-// THE LION
-//Lion simba;
+/* ------------------------------- */
 
 // THE TRACK
 Track track;
 
+// THE UNICORN
+Unicorn unicorn;
+// THE OSTRICH
+Ostrich ostrich;
+// THE TURTLE
+Turtle turtle;
+
 // THE CAROUSEL
 Carousel carousel;
 
-char* files[1] = { const_cast<char*>("sample.wav") };
+// THE SOUND PLAYER
+char* files[1] = { const_cast<char*>("main.wav") };
+MediaPlayer *SoundPlayer = new SoundEngine(files);
 
-MediaPlayer *SoundEngine = new Balto(files);
 
-// Set up all callback functions and the display environment.
+/* ---------------------------------------------------------- */
+/* Set up all callback functions and the display environment. */
+
 int main(int argc, char* argv[])
 {
 	gltSetWorkingDirectory(argv[0]);
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(ORIG_WINDOW_SIZE[0], ORIG_WINDOW_SIZE[1]);
@@ -137,7 +168,7 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
-  //SoundEngine->Play( 0, true );
+  //SoundPlayer->Play( 0, true );
 
 	glutKeyboardFunc( KeyboardPress );
 	glutSpecialFunc( NonASCIIKeyboardPress );
@@ -152,7 +183,10 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-// Initialize the batches of objects that will be rendered, and create and load the texture objects.
+
+/* ------------------------------------------------------------------------------------------------- */
+/* Initialize the batches of objects that will be rendered, and create and load the texture objects. */
+
 void SetupRenderingContext()
 {
 	int i, j;
@@ -162,14 +196,21 @@ void SetupRenderingContext()
 	glEnable(GL_DEPTH_TEST);
 	//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClearColor(0.94f, 0.94f, 1.0f, 1.0f); // Blue Sky
-  //glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	theWheel.SetupRenderingContext();
-  //simba.SetupRenderingContext();
+  /* ------------- */
+  /* Scene objects */
+
   track.SetupRenderingContext();
+	theWheel.SetupRenderingContext();
   carousel.SetupRenderingContext();
 
-	// Make the ground
+  unicorn.SetupRenderingContext();
+  ostrich.SetupRenderingContext();
+  turtle.SetupRenderingContext();
+
+  /* --------------- */
+	/* Make the ground */
+
 	GLfloat texSize = 50.0f;
 	groundBatch.Begin(GL_TRIANGLE_FAN, 4, 1);
 		groundBatch.MultiTexCoord2f(0, 0.0f, 0.0f);
@@ -182,12 +223,16 @@ void SetupRenderingContext()
 		groundBatch.Vertex3f(-0.5f * FLOOR_GRID_WIDTH, FLOOR_HEIGHT, -0.5f * FLOOR_GRID_WIDTH);
 	groundBatch.End();
 
-	// Make texture object for ground.
+  /* ------------------------------- */
+	/* Make texture object for ground. */
+
 	glGenTextures(1, &groundTexture);
 	glBindTexture(GL_TEXTURE_2D, groundTexture);
 	LoadBMPTexture(GROUND_TEXTURE_FILENAME, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_REPEAT);
 	
-	// Make texture objects for cap.
+  /* ----------------------------- */
+	/* Make texture objects for cap. */
+
 	glGenTextures(NBR_TEXTURE_SETS, capTexture);
 	for ( i = 0; i < NBR_TEXTURE_SETS; i++ )
 	{
@@ -195,7 +240,9 @@ void SetupRenderingContext()
 		LoadBMPTexture(CAP_TEXTURE_FILENAME[i], GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_CLAMP_TO_EDGE);
 	}
 
-	// Make texture objects for wheel components.
+  /* ------------------------------------------ */
+	/* Make texture objects for wheel components. */
+
 	glGenTextures(NBR_WHEEL_TEXTURES, wheelTexture);
 	for ( i = 0; i < NBR_WHEEL_TEXTURES; i++ )
 	{
@@ -203,7 +250,9 @@ void SetupRenderingContext()
 		LoadBMPTexture(WHEEL_TEXTURE_FILENAME[i], GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_CLAMP_TO_EDGE);
 	}
 
-	// Make texture objects for Ferris wheel car walls.
+  /* ------------------------------------------------ */
+	/* Make texture objects for Ferris wheel car walls. */
+
 	for ( i = 0; i < NBR_TEXTURE_SETS; i++ )
 	{
 		glGenTextures(NBR_WALL_TEXTURES, wallTexture[i]);
@@ -214,7 +263,9 @@ void SetupRenderingContext()
 		}
 	}
 
-	// Make texture objects for car components.
+  /* ---------------------------------------- */
+	/* Make texture objects for car components. */
+
 	glGenTextures(NBR_CAR_TEXTURES, carTexture);
 	for ( i = 0; i < NBR_CAR_TEXTURES; i++ )
 	{
@@ -223,7 +274,10 @@ void SetupRenderingContext()
 	}
 }
 
-// Remove all remnants of the textures that were used.
+
+/* --------------------------------------------------- */
+/* Remove all remnants of the textures that were used. */
+
 void ShutdownRenderingContext()
 {
 	glDeleteTextures(1, &groundTexture);
@@ -234,7 +288,10 @@ void ShutdownRenderingContext()
 	glDeleteTextures(NBR_CAR_TEXTURES, carTexture);
 }
 
-// Load in a BMP file as a texture. Allows specification of the filters and the wrap mode
+
+/* -------------------------------------------------------------------------------------- */
+/* Load in a BMP file as a texture. Allows specification of the filters and the wrap mode */
+
 bool LoadBMPTexture(const char *szFileName, GLenum minFilter, GLenum magFilter, GLenum wrapMode)	
 {
 	GLbyte *pBits;
@@ -266,7 +323,10 @@ bool LoadBMPTexture(const char *szFileName, GLenum minFilter, GLenum magFilter, 
 	return true;
 }
 
-// Callback for handling display screen reshaping.
+
+/* ----------------------------------------------- */
+/* Callback for handling display screen reshaping. */
+
 void ResizeWindow(int nWidth, int nHeight)
 {
 	glViewport(0, 0, nWidth, nHeight);
@@ -279,7 +339,10 @@ void ResizeWindow(int nWidth, int nHeight)
 	transformPipeline.SetMatrixStacks(modelViewMatrix, projectionMatrix);
 }
 
-// Called to draw the scene
+
+/* ------------------------ */
+/* Called to draw the scene */
+
 void Display()
 {
 	// Clear the color and depth buffers
@@ -317,18 +380,6 @@ void Display()
 
 	modelViewMatrix.PopMatrix();
 
-  /*
-  modelViewMatrix.PushMatrix();
-
-    const int indices[] = {
-      1, 2, 3, 4, 5, 6, 7, 8, 9
-    };
-  
-    glDrawElements(GL_TRIANGLE_STRIP, 14, GL_UNSIGNED_SHORT, indices);
-
-  modelViewMatrix.PopMatrix();
-   */
-
 	// Do the buffer Swap
 	glutSwapBuffers();
 
@@ -336,7 +387,10 @@ void Display()
 	glutPostRedisplay();
 }
 
-// Renders the texture-mapped ground.
+
+/* ---------------------------------- */
+/* Renders the texture-mapped ground. */
+
 void DrawGround()
 {
 	glEnable(GL_BLEND);
@@ -352,7 +406,10 @@ void DrawGround()
 	glDisable(GL_BLEND);
 }
 
-// Renders the Ferris wheel objects via Wheel's Draw routine.
+
+/* ---------------------------------------------------------- */
+/* Renders the Ferris wheel objects via Wheel's Draw routine. */
+
 void DrawScene()
 {
 	modelViewMatrix.PushMatrix();	
@@ -364,32 +421,51 @@ void DrawScene()
 		M3DVector4f vLightEyePos;
 		m3dTransformVector4(vLightEyePos, vLightPos, mCamera);
 
-    /*
-
-		// Position the ferris wheel appropriately.
-		modelViewMatrix.Translate(FERRIS_WHEEL_POSITION[0], FERRIS_WHEEL_POSITION[1], FERRIS_WHEEL_POSITION[2]);
-
-		// Apply the Translation to this entire block of objects
-		modelViewMatrix.PushMatrix();
-      //theWheel.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos, capTexture, wheelTexture, wallTexture, carTexture, currentTextureIndex);
-		modelViewMatrix.PopMatrix();
+    /* ------------ */
+    /* FERRIS WHEEL */
 
     modelViewMatrix.PushMatrix();
-      //simba.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos, 0, wallTexture[0][1], carTexture);
-      track.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
-    modelViewMatrix.PopMatrix();
-  
-    modelViewMatrix.PushMatrix();
-      modelViewMatrix.Translate(3.0f, 0.0f, 0.0f);
-      carousel.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
+        /* Position the ferris wheel appropriately. */
+      modelViewMatrix.Translate(FERRIS_WHEEL_POSITION[0], FERRIS_WHEEL_POSITION[1], FERRIS_WHEEL_POSITION[2]);
+
+      /* Apply the Translation to this entire block of objects */
+      modelViewMatrix.PushMatrix();
+        //theWheel.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos, capTexture, wheelTexture, wallTexture, carTexture, currentTextureIndex);
+      modelViewMatrix.PopMatrix();
+
     modelViewMatrix.PopMatrix();
 
-  */
+    /* -------------- */
+    /* ROLLER COASTER */
+
+    modelViewMatrix.PushMatrix();
+      modelViewMatrix.Translate(0.0, 0.0, -10.0);
+      //track.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
+    modelViewMatrix.PopMatrix();
+
+    /* -------- */
+    /* CAROUSEL */  
+
+    modelViewMatrix.PushMatrix();
+      //modelViewMatrix.Translate(3.0f, 0.0f, -3.0f);
+      modelViewMatrix.Translate(0.0f, 0.0f, -3.0f);
+      //carousel.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
+    modelViewMatrix.PopMatrix();
+
+    modelViewMatrix.PushMatrix();
+      modelViewMatrix.Translate(0.0f, 0.0f, -2.0f);
+      //unicorn.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
+      //ostrich.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
+      turtle.Draw(modelViewMatrix, shaderManager, transformPipeline, vLightEyePos);
+    modelViewMatrix.PopMatrix();
 
 	modelViewMatrix.PopMatrix();
 }
 
-// Update positions, orientations, etc., of all changing objects.
+
+/* -------------------------------------------------------------- */
+/* Update positions, orientations, etc., of all changing objects. */
+
 void TimerFunction(int value)
 {
 	theWheel.Update();
@@ -398,7 +474,10 @@ void TimerFunction(int value)
 	glutTimerFunc(50, TimerFunction, value);
 }
 
-// Respond to user requests to toggle reflection or to display alternative textures.
+
+/* --------------------------------------------------------------------------------- */
+/* Respond to user requests to toggle reflection or to display alternative textures. */
+
 void KeyboardPress(unsigned char pressedKey, int mouseXPosition, int mouseYPosition)
 {
   switch (pressedKey) {
@@ -419,7 +498,10 @@ void KeyboardPress(unsigned char pressedKey, int mouseXPosition, int mouseYPosit
   }
 }
 
-// Respond to arrow keys by moving the camera frame of reference
+
+/* ------------------------------------------------------------- */
+/* Respond to arrow keys by moving the camera frame of reference */
+
 void NonASCIIKeyboardPress(int key, int mouseXPosition, int mouseYPosition)
 {	
   switch (key) {

@@ -1,21 +1,10 @@
 /***
- * Copyright (c) 2009,2010 Mark Sands. All rights reserved.
- * September, 4 2009
- *
- * Balto - Basic openAL Toolkit using OpenAL
- *
- * Balto - a lightweight OpenAL toolkit for Audio playback
+ * SoundEngine - a lightweight OpenAL toolkit for Audio playback
  *	designed to encapsulate the low level audio handling
  *	and provide the user with a nice, easy to use
  *	high level application programming interface for
  *	sound rendering in their applications.
  *
- ***
- *
- * TODO:
- *			create an MP3Buffer.h
- *			see: http://en.wikipedia.org/wiki/MP3#File_structure
- *			On play-from-pause resume play
  ***/
 
 #ifndef BALT_H_KBA7BAQ2
@@ -59,17 +48,17 @@ public:
 
 
 /*
- * AduioPlayer
+ * SoundEngine
  * 	Main class for reading user audio files and producing the audio output
  * 	provides inherited member fuctions from MediaPlayer
  *
  */ 
 
-class Balto: public MediaPlayer {
-  
+class SoundEngine: public MediaPlayer {
+
 public:
-  Balto( char* filenames[],  const int size = 1 );
-  virtual ~Balto();
+  SoundEngine( char* filenames[],  const int size = 1 );
+  virtual ~SoundEngine();
   
   void Play( const int index = 1, bool looping = false);
   void Pause( const int index = 1);
@@ -77,6 +66,7 @@ public:
   void SetVolume( const int index = 1,  const float volume = 1.0f);	
   
   void Load();
+
 protected:
   bool InitSources();
   void Delete();
@@ -131,8 +121,7 @@ ALuint loadWAVFromFile( char* filename );
 
 
 /*
- * Balto( filenames, size )
- * Last modified: 26Mar2010
+ * SoundEngine( filenames, size )
  *
  * Default constructor lodas the filename array of songs.
  * Sets the NUM_BUFFERS to 256 maximum allowed buffers
@@ -145,7 +134,7 @@ ALuint loadWAVFromFile( char* filename );
  *
  */
 
-Balto::Balto(char *filenames[], const int size) : NUM_BUFFERS(256) {
+SoundEngine::SoundEngine(char *filenames[], const int size) : NUM_BUFFERS(256) {
   
   for( int i = 0; i < size; i++ )
     audioFiles.push_back( filenames[i] );
@@ -156,8 +145,7 @@ Balto::Balto(char *filenames[], const int size) : NUM_BUFFERS(256) {
 
 
 /*
- * ~Balto()
- * Last modified: 16Sep2009
+ * ~SoundEngine()
  *
  * Default destructor calls the Delete() method
  *
@@ -166,14 +154,13 @@ Balto::Balto(char *filenames[], const int size) : NUM_BUFFERS(256) {
  *
  */
 
-Balto::~Balto() {
+SoundEngine::~SoundEngine() {
   Delete();
 }
 
 
 /*
  * Load()
- * Last modified: 26Oct2009
  *
  * Method to load all the audio sources into the Buffers
  *
@@ -183,7 +170,7 @@ Balto::~Balto() {
  */
 
 void
-Balto::Load()
+SoundEngine::Load()
 {
   for ( int i = 0; i < (int)audioFiles.size(); i++ ) {
     Buffers[i] = loadWAVFromFile( audioFiles[ i ] );
@@ -193,7 +180,6 @@ Balto::Load()
 
 /*
  * Play( index, looping )
- * Last modified: 26Oct2009
  *
  * Method to play the specified file index
  * This is where we want to queue our buffers
@@ -206,7 +192,7 @@ Balto::Load()
  */
 
 void
-Balto::Play( int index, bool looping )
+SoundEngine::Play( int index, bool looping )
 {	
   CleanSources();
   
@@ -221,10 +207,10 @@ Balto::Play( int index, bool looping )
     if ( value <= 0 )
       Buffers[index] = loadWAVFromFile( audioFiles[ index ] );
 
-    /* ----------- >
-     * WHITE NOISE >
-     * ----------- >
+    /* ----------- */
+    /* WHITE NOISE */
 
+    /*
     int Buffersize = 50000;
     char data[Buffersize];
 
@@ -249,10 +235,8 @@ Balto::Play( int index, bool looping )
 }
 
 
-
 /*
  * Pause( index )
- * Last modified: 17Oct2009
  *
  * Pauses all sounds in the buffer
  *
@@ -263,7 +247,7 @@ Balto::Play( int index, bool looping )
  */
 
 void
-Balto::Pause( int index )
+SoundEngine::Pause( int index )
 {
   for ( int i = 0; i < (int)NUM_BUFFERS; i++ )
     alSourcePause( Sources[i] );
@@ -272,7 +256,6 @@ Balto::Pause( int index )
 
 /*
  * Stop( index )
- * Last modified: 17Oct2009
  *
  * stops all sounds in the buffer
  *
@@ -283,7 +266,7 @@ Balto::Pause( int index )
  */
 
 void
-Balto::Stop( int index )
+SoundEngine::Stop( int index )
 {
   for ( int i = 0; i < (int)NUM_BUFFERS; i++ )
     alSourceStop( Sources[i] );
@@ -292,7 +275,6 @@ Balto::Stop( int index )
 
 /*
  * SetVolume( index, volume )
- * Last modified: 17Oct2009
  *
  * sets the volume from 0.0 to 1.0 (max)
  *
@@ -304,7 +286,7 @@ Balto::Stop( int index )
  */
 
 void
-Balto::SetVolume( const int index,  const float volume)
+SoundEngine::SetVolume( const int index,  const float volume)
 {
   for ( int i = 0; i < (int)NUM_BUFFERS; i++ )
     alSourcei( Sources[i], AL_GAIN, volume > 0 ? 1.0 : volume );
@@ -313,7 +295,6 @@ Balto::SetVolume( const int index,  const float volume)
 
 /*
  * GetFreeSource()
- * Last modified: 25Oct2009
  *
  * Returns a free source from the sources buffer
  *
@@ -323,7 +304,7 @@ Balto::SetVolume( const int index,  const float volume)
  */
 
 ALuint
-Balto::GetFreeSource()
+SoundEngine::GetFreeSource()
 {	
   for ( int i = 0; i < (int)NUM_BUFFERS; i++ ) {
     if ( altSourceData[i].INUSE == SOURCE_FREE )
@@ -335,7 +316,6 @@ Balto::GetFreeSource()
 
 /*
  * CleanSources()
- * Last modified: 25Oct2009
  *
  * Resets finished sources to a free and available state.
  * Be sure to unqueue the unplayed buffers here.
@@ -348,7 +328,7 @@ Balto::GetFreeSource()
  */
 
 void
-Balto::CleanSources()
+SoundEngine::CleanSources()
 {
   if ( playCount >= (int)NUM_BUFFERS/2 ) {
     ALenum state;
@@ -368,7 +348,6 @@ Balto::CleanSources()
 
 /*
  * InitSources()
- * Last modified: 26Mar2010
  *
  * Right now this is a nasty method
  * to initialize the sources from the
@@ -385,7 +364,7 @@ Balto::CleanSources()
  */
 
 bool
-Balto::InitSources()
+SoundEngine::InitSources()
 {
   playCount = 0;
   
@@ -432,7 +411,7 @@ Balto::InitSources()
     alSourcefv(Sources[i], AL_POSITION, altSource.position[0]);	
     alSourcefv(Sources[i], AL_VELOCITY, altSource.velocity[0]);
   }
-  
+
   alListenerfv(AL_POSITION,       altListener.position);
   alListenerfv(AL_VELOCITY,       altListener.velocity);
   alListenerfv(AL_ORIENTATION, altListener.orientation);
@@ -445,7 +424,6 @@ Balto::InitSources()
 
 /*
  * Delete()
- * Last modified: 16Sep2009
  *
  * Deletes the OpenAL buffers and sources by
  * calling the OpenAL methods, also destorys
@@ -457,7 +435,7 @@ Balto::InitSources()
  */
 
 void 
-Balto::Delete() {
+SoundEngine::Delete() {
   
   alDeleteBuffers(NUM_BUFFERS, Buffers);
   alDeleteSources(NUM_BUFFERS, Sources);
@@ -474,7 +452,6 @@ Balto::Delete() {
 /*  
  * static
  * loadWAVFromFile( filename )
- * Last modified: 26Oct2009
  * 
  * A default function to load the wav
  * via filename and return its buffer

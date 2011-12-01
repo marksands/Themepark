@@ -1,7 +1,5 @@
 //***************************************************************************//
-// Copyright (c) 2009 Mark Sands. All rights reserved.
-//
-// Special thanks to Gorax on http://www.gamedev.net
+// Simple Wav loader
 //
 
 #ifndef WAV_BUFFER_H
@@ -54,7 +52,6 @@ public:
 
 //
 // ReadWAV( filename, header )
-// Last modified: 26Mar2010
 //
 // the WAVBuffer method that reads the wav into the header
 // and returns the buffer data from the wav file
@@ -102,7 +99,6 @@ char* WAVBuffer::ReadWAV( char* filename, SimpleWAVHeader* header ) {
 
 //
 // CreateBufferFromWav( data, header )
-// Last modified: 04Sep2009
 //
 // the WAVBuffer method that generates and creates
 // an audio buffer from the wav data
@@ -131,7 +127,7 @@ ALuint WAVBuffer::CreateBufferFromWav( char* data, SimpleWAVHeader header ) {
   
 	alGenBuffers( 1, &buffer );
 	alBufferData( buffer, format, data, header.dataSize, header.samplesPerSec );
-  
+
   // memory cleanup of pre-allocated data
 	free(data);
   
